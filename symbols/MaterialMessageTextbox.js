@@ -16,7 +16,7 @@ export default class MaterialMessageTextbox extends Component {
             }
           ]}
         >
-          Label
+          
         </Text>
         <TextInput
           style={[
@@ -29,7 +29,7 @@ export default class MaterialMessageTextbox extends Component {
                 : "#D9D5DC"
             }
           ]}
-          placeholder="Input"
+          placeholder="Descreva com detalhes!"
         />
         {this.props.error ? (
           <Text

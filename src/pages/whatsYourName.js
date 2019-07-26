@@ -8,16 +8,7 @@ import MaterialMessageTextbox from "../../symbols/MaterialMessageTextbox";
 import Icon from "@builderx/icons";
 
 export default class App extends React.Component {
-    state = {
-        selectedIndex: 0,
-    };
-
-    onGroupSelectionChange = (selectedIndex: number) => {
-        this.setState({
-            selectedIndex
-        });
-    };
-
+  
     render(){
         
 
@@ -30,17 +21,8 @@ export default class App extends React.Component {
     mapping={mapping}
     theme={theme}>
       <Layout style={styles.root}>
-        <Text style={styles.text} >Como você  pode ajudar?</Text>
-        <Text style={styles.subText} >Pode ser com mais de uma coisa!</Text>
-        <RadioGroup
-        style={{flexDirection:'row'}}
-        selectedIndex={this.state.selectedIndex}
-        onChange={this.onGroupSelectionChange}>
-          <Radio />
-          <Radio />
-          <Radio />
-        </RadioGroup>
-
+        <Text style={styles.text} >Qual é o seu nome?</Text>
+       
           <MaterialMessageTextbox style={styles.materialMessageTextbox} />
           <Icon
           onPress={() => goBack()}
