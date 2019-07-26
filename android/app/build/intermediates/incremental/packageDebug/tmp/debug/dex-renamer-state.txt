@@ -1,0 +1,4 @@
+#Thu Jul 25 21:06:42 BRT 2019
+base.0=/home/davi/Documentos/coding/js/savipages/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+path.0=classes.dex
