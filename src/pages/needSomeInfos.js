@@ -1,103 +1,102 @@
-/* eslint-disable prettier/prettier */
-import * as React from 'react';
-import { mapping } from '@eva-design/eva';
-import { ApplicationProvider, Layout, Button, Radio, RadioGroup } from 'react-native-ui-kitten';
-import { StyleSheet, Text, View } from 'react-native';
-import {theme} from '../theme'
-import MaterialMessageTextbox from "../../symbols/MaterialMessageTextbox";
-import Icon from "@builderx/icons";
+import React, {Component} from 'react';
+import {StyleSheet} from 'react-native'
+import { TextInput, Title, Provider, Surface, Text, Button } from 'react-native-paper';
+import api from '../services/api'
 
-export default class App extends React.Component {
+
+
+
+const styles=StyleSheet.create({
+  margin:{
+    marginLeft:8,
+    marginRight:8,
+    marginTop:8 
+  },
+  surface: {
+    padding: 0,
+    height: 80,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 10,
+    borderRadius:100,
+    backgroundColor:"#ff6400",
+    color:'white',
+    marginTop:120,
+    marginLeft:250
+  },
+})
+export default class Form extends Component {
+
+  componentDidMount(){
+    api.post()
+  }
+  async makeRequest() {
+
+    const config = {
+        method: 'post',
+        url: 'https://parseapi.back4app.com/classes/organization',
+        headers: {
+          'X-Parse-Application-Id': '47RAnYvxm7rWLUTUZYHt9SItJjd9FnmWj5ZK5g92',
+          'X-Parse-REST-API-Key': 'ZMbHFNcQ1Rvh7bIpoctydiF9yRtZDrnJ81pzhtdF',
+          'Content-Type': 'application/json'
+        },
+        }
   
-    render(){
-        
-
-     const {
-         navigate
-     } = this.props.navigation;
-
-    return (
-    <ApplicationProvider
-    mapping={mapping}
-    theme={theme}>
-      <Layout style={styles.root}>
-        <Text style={styles.text} >Precisamos de algumas informações</Text>
-       
-          <MaterialMessageTextbox style={styles.materialMessageTextbox} />
-          <MaterialMessageTextbox style={styles.materialMessageTextbox} />  
-          <Icon
-          onPress={() => goBack()}
-          type={"Ionicons"}
-          name={"ios-arrow-dropleft-circle"}
-          style={styles.icon}
-          />
-          <Icon
-          onPress={() => navigate('howCanHelp', {name: 'howCanHelp'})}
-          type={"Ionicons"}
-          name={"ios-arrow-dropright-circle"}
-          style={styles.icon2}
-          />
-      </Layout>
-    </ApplicationProvider>
-      );
-    }
+    let res = await axios(config)
+  
+    console.log(res.status);
   }
 
-const styles = StyleSheet.create({
-  navButtom:{
-    width:1,
-height:1,
-  },
-  subText:{
-    fontSize:20,
-  },
-  help:{
-    top:'10%',
-    borderRadius:100,
-    width:'80%'
-  },
-  root:{
-    flex:1,
-    alignItems:'center',
-  },
-  beHelped: {
-    top:'8%', 
-    borderRadius:100,
-    width:'80%'
-  },
-  text: {
-  fontSize:78,
-  marginLeft:'5%'
-
-},
-  root: {
-    flex: 1,
-    backgroundColor: "white"
-  },
-  materialMessageTextbox: {
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "54.61%",
-    position: "absolute"
-  },
-  icon: {
-    top: 123.72,
-    left: '5%',
-    position: "absolute",
-    color: "rgba(126,211,33,1)",
-    fontSize: 40,
-    width: "9.75%",
-    height: "24.28%"
-  },
-  icon2: {
-    top: 124.72,
-    left: '85%',
-    position: "absolute",
-    color: "rgba(126,211,33,1)",
-    fontSize: 40,
-    width: "9.76%",
-    height: "24.3%"
-},
-});
-
+  state = {
+    text: ''
+  };
+  render(){
+    const { navigate } = this.props.navigation
+    return (
+      <Provider>
+        <Title style={styles.margin}>Registre-se!</Title>
+      <TextInput
+        style={styles.margin}
+        label='Email'
+        mode='outlined'
+        value={this.state.email}
+        onChangeText={email => this.setState({ email })}
+      />
+            <TextInput
+        label='Nome comercial'
+        mode='outlined'
+        style={styles.margin}
+        value={this.state.commercialName}
+        onChangeText={commercialName => this.setState({ commercialName })}
+      />
+            <TextInput
+        label='Número do documento'
+        mode='outlined'
+        style={styles.margin}
+        value={this.state.documentNumber}
+        onChangeText={documentNumber => this.setState({ documentNumber })}
+      />
+                  <TextInput
+        label='Senha'
+        mode='outlined'
+        style={styles.margin}
+        value={this.state.passwd}
+        onChangeText={passwd => this.setState({ passwd })}
+      />
+                        <TextInput
+        label='Telefone'
+        mode='outlined'
+        style={styles.margin}
+        value={this.state.phoneNumber}
+        onChangeText={phoneNumber => this.setState({ phoneNumber })}
+      />
+        <Button style={styles.surface}
+        onPress={() => navigate('ongsHub', {name: 'ongsHub'})}>
+     <Text style={{color:'white'}}> > </Text>
+  </Button>
+      </Provider>
+      
+    );
+  }
+}

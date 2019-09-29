@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/davi/Documentos/coding/js/savipages/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml",
+            "outputFile": "/home/davi/gits/savipages/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml",
             "map": [
                 {
                     "source": "/home/davi/.gradle/caches/transforms-2/files-2.1/6d11d80d1f8fd8e38e171cc21f75cca4/res/values-hr/values-hr.xml",

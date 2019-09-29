@@ -9,15 +9,18 @@ import needSomeInfos from './pages/needSomeInfos'
 import uWillHelpPeople from './pages/uWillHelpPeople'
 import whatsYourName from './pages/whatsYourName'
 import emailer from './pages/emailer'
+import ongsHub from './pages/ongsHub'
 
 const AppNavigator = createStackNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: needSomeInfos,
     },
     howCanHelp:{
-        screen: howCanHelp,
+        screen: needSomeInfos,
     },
-
+    ongsHub:{
+        screen: ongsHub
+    }
     
 }, {
     defaultNavigationOptions: {
