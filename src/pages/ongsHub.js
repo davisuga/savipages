@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import  Parse from  'parse/react-native';
@@ -11,6 +12,7 @@ Parse.initialize(
 
 
 class ongsHub extends React.Component{
+  
     state={
         offers:''
     }

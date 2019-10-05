@@ -48,6 +48,16 @@ const styles=StyleSheet.create({
   }
 })
 export default class Form extends Component {
+
+  verify(){
+    if (this.state.name.trim() === "" && this.state.commercialName.trim() === "" && this.state.phoneNumber.trim() === "") {
+      this.setState(() => ({ nameError: "First name required." }));
+    } else {
+      this.setState(() => ({ nameError: null }));
+    }
+    navigate('ongsHub', {name: 'ongsHub'}); 
+  }
+
   async postONG(){
 
     const organization = Parse.Object.extend('organization');
@@ -109,7 +119,7 @@ export default class Form extends Component {
       <Provider >
               <KeyboardAvoidingView>
          <Button style={styles.surface}
-                onPress={() => navigate('ongsHub', {name: 'ongsHub'})}>
+                onPress={() => this.verify }>
             <Text style={{color:'white'}}> > </Text>
          </Button>
 
@@ -127,8 +137,8 @@ export default class Form extends Component {
             style={styles.margin}
             label='Nome'
             mode='outlined'
-            value={this.state.nome}
-            onChangeText={nome => this.setState({ nome })}
+            value={this.state.name}
+            onChangeText={name => this.setState({ name })}
           />
                 <TextInput
             label='Nome comercial'
@@ -153,7 +163,7 @@ export default class Form extends Component {
             onChangeText={organizationType => this.setState({ organizationType })}
           />
                 <TextInput
-            keyboardType={'password'}
+            
             label='Senha'
             mode='outlined'
             style={styles.margin}
@@ -168,6 +178,9 @@ export default class Form extends Component {
             value={this.state.phoneNumber}
             onChangeText={phoneNumber => this.setState({ phoneNumber })}
           />
+          {!!this.state.nameError && (
+          <Text style={{ color: "red" }}>{this.state.nameError}</Text>
+        )}
 
 </ScrollView>
 </KeyboardAvoidingView>
